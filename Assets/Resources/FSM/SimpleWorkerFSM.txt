@@ -1,0 +1,70 @@
+﻿{
+  "fsm": [
+    {
+      "condition_name": "IsRoot",
+      "state_name": "IdleState",
+      "states": [
+        {
+          "condition_name": "!DidMoveToSignPoint",
+          "state_name": "MoveState",
+          "states": [
+          	{
+              "condition_name": "DidMoveToSignPoint",
+              "state_name": "WaitingCommandState",
+              "states": [
+              	{
+	              "condition_name": "HaveHavest",
+	              "state_name": "HavestState",
+	              "states": [
+	              	{
+		              "condition_name": "DidFullStorable",
+		              "state_name": "GoNestState",
+		              "states": [
+		              	{
+			              "condition_name": "DidMoveToNest",
+			              "state_name": "ProductFoodState",
+			              "states": [
+			              	{
+				              "condition_name": "DidProductFoodComplete",
+				              "state_name": "IdleState",
+				              "states": []
+				            }
+			              ]
+			            }
+		              ]
+		            },{
+		              "condition_name": "!HaveHavest",
+		              "state_name": "GoNestState",
+		              "states": []
+		            }
+	              ]
+	            },{
+	              "condition_name": "!DidMoveToSignPoint",
+	              "state_name": "IdleState",
+	              "states": []
+	            }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "condition_name": "IsAnyState",
+      "state_name": "AnyState",
+      "states": [
+        {
+          "condition_name": "IsDeath",
+          "state_name": "DeathState",
+          "states": [
+            {
+              "condition_name": "IsDeath",
+              "state_name": "IdleState",
+              "states": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

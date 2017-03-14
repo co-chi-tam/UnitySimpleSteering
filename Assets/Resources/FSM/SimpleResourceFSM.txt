@@ -1,0 +1,26 @@
+﻿{
+  "fsm": [
+    {
+      "condition_name": "IsRoot",
+      "state_name": "ResourceIdleState",
+      "states": []
+    },
+    {
+      "condition_name": "IsAnyState",
+      "state_name": "AnyState",
+      "states": [
+        {
+          "condition_name": "IsDeactive",
+          "state_name": "ResourceDeactiveState",
+          "states": [
+            {
+              "condition_name": "IsDeactive",
+              "state_name": "ResourceIdleState",
+              "states": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
